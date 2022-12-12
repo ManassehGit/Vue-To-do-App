@@ -28,13 +28,16 @@
             <div class="mainBody">
                 <div class="card">
                     <h2>{{activeTab}}</h2>
-                    <p>
-                        <span>A description for the given title</span><br />
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                        Ipsa sequi harum sapiente, vitae aspernatur ut vero at culpa 
-                        fuga eligendi aliquam. Qui, nisi odio magnam odit necessitatibus 
-                        sunt, esse maiores, quis eligendi dolores at ipsam commodi dicta 
-                        quo repellendus eius.
+                    <p class="main">
+                        <span @click="enableEdit('heading')" class="heading">
+                            <span v-show="!edit">{{initialHeading}}</span>
+                            <input v-show="edit" type="text" v-model="initialHeading" />
+                        </span><br />                  
+                        <span @click="enableEdit('mainDescription')" class="mainDescription">
+                            {{initialDescription}}
+                        </span>
+                        <br />
+                        <button v-show="edit === true" @click="handleEdit">Save</button>
                     </p>
                     <div class="inputAndButton">
                         <input type="text" placeholder="Enter the Assignee's name" v-model="assignee" />

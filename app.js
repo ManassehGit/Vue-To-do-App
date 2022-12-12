@@ -1,12 +1,24 @@
 class Task {
     constructor(name){
         this.name = name;
+        this.heading = ""
         this.description = "";
         this.assignees = [];
         this.setDate = new Date();
         this.duration = "";
     }
 }
+
+let sampleHeading = 'A description for the given title';
+let sampleDescription = `
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+    Ipsa sequi harum sapiente, vitae aspernatur ut vero at culpa 
+    fuga eligendi aliquam. Qui, nisi odio magnam odit necessitatibus 
+    sunt, esse maiores, quis eligendi dolores at ipsam commodi dicta 
+    quo repellendus eius.
+`;
+
+
 let app = new Vue({
     el: "#app",
     data() {
@@ -19,7 +31,9 @@ let app = new Vue({
             addCategory: "",
             activeTab: "Welcome to Todo",
             assignee: "",
-            currentAssignees: []
+            initialHeading: sampleHeading,
+            initialDescription: sampleDescription,
+            edit: false
         }
     },
     methods: {
@@ -56,6 +70,16 @@ let app = new Vue({
                 this.titles[tabIndex].assignees = newAssigneesList;
                 console.log(this.titles[tabIndex].assignees);
             }
+        },
+        enableEdit(option){
+            this.edit = true;
+            if(option === "heading"){
+                
+            }
+        },
+        handleEdit(){
+            console.log("Yet to save the edit state")
+            this.edit = false;
         }
     },
     computed: {

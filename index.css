@@ -96,11 +96,15 @@ header{
     margin: 2em;
 }
 
-.card span{
+.card .heading{
     color: #695239;
     font-size: 1em;
     font-weight: bold;
     border-bottom: 0.5px dashed black;
+}
+
+.card .mainDescription{
+    font-weight: normal;
 }
 
 .card .inputAndButton {
@@ -125,3 +129,18 @@ header{
     flex-wrap: wrap;
     justify-content: space-between;
 }
+
+.card p button {
+    box-shadow: 1px 1px 3px #695239;
+    padding: 5px;
+    border-radius: 5px;
+    margin-top: 7px;
+}
+
+.card p button:hover{
+    box-shadow: none;
+    color: #695239;
+    font-weight: bolder;
+}
+
+
