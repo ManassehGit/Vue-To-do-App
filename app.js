@@ -16,7 +16,8 @@ let app = new Vue({
                 "General": new Task("General"),
                 "Others": new Task("Others")
             }, 
-            addCategory: ""
+            addCategory: "",
+            activeTab: "Welcome to Todo"
         }
     },
     methods: {
@@ -24,6 +25,12 @@ let app = new Vue({
             if(!Object.keys(this.titles).includes(name)){
                 this.titles[this.addCategory] = new Task(name);
                 this.addCategory = "";
+            }
+        },
+        setActive(title){
+            if(this.activeTab !== title){
+                this.activeTab = title;
+                console.log(`This tab was click on ${title}`)
             }
         }
     }

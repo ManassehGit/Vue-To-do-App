@@ -20,12 +20,14 @@
                     <input type="text" v-model="addCategory" placeholder="Enter Here" id="sideInput"/>
                     <button v-on:click="addTitle">Ok</button>
                 </div>
-                <div class="sidetab" v-for="title of Object.keys(titles)">{{title}}</div>
+                <div class="sidetab" v-for="title of Object.keys(titles)">
+                    <div @click="setActive(title)">{{title}}</div>
+                </div>
                 
             </div>
             <div class="mainBody">
                 <div class="card">
-                    <h2>The main heading</h2>
+                    <h2>{{Object.keys(titles)}}</h2>
                     <p>
                         A description for the given title<br />
                         Something to 
