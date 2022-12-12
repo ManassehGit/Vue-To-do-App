@@ -1,8 +1,14 @@
 class Task {
     constructor(name){
         this.name = name;
-        this.heading = ""
-        this.description = "";
+        this.heading = name + " - A description for the given title"
+        this.description = `
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+        Ipsa sequi harum sapiente, vitae aspernatur ut vero at culpa 
+        fuga eligendi aliquam. Qui, nisi odio magnam odit necessitatibus 
+        sunt, esse maiores, quis eligendi dolores at ipsam commodi dicta 
+        quo repellendus eius.
+        `;
         this.assignees = [];
         this.setDate = new Date();
         this.duration = "";
@@ -38,6 +44,12 @@ let app = new Vue({
         }
     },
     methods: {
+        setHeading(heading){
+            this.initialHeading = heading;
+        },
+        setDescription(description){
+            this.initialDescription = description;
+        },
         addTitle(name){
             let newTask = new Task(name)
             if(this.addCategory !== "" && this.titles.filter(object => object.name === newTask.name).length < 1){
@@ -49,11 +61,18 @@ let app = new Vue({
             this.addCategory = "";
         },
         setActive(tab){
+            let tabIndex = this.titles.findIndex(item => item.name == this.activeTab);
+            console.log(tabIndex)
+            if(tabIndex >= 0){
+                this.setHeading(this.titles[tabIndex].heading);
+                this.setDescription(this.titles[tabIndex].description);
+            } 
             if(this.activeTab !== tab){
                 this.activeTab = tab;
                 console.log(`This tab was click on ${tab}`)
                 
             }
+            
         }, 
         addAssignee(){
             let tabIndex = this.titles.findIndex(item => item.name == this.activeTab);
@@ -81,16 +100,21 @@ let app = new Vue({
             }
         },
         handleEdit(){
+            let tabIndex = this.titles.findIndex(item => item.name == this.activeTab);
+            console.log(tabIndex);
             let option = this.headingEdit ? "heading" : "mainDescription";
             if(option === "heading"){
                 this.headingEdit = false;
+                this.titles[tabIndex].heading = this.initialHeading;
+
             }
             if(option === "mainDescription"){
                 this.descriptionEdit = false;
+                this.titles[tabIndex].description = this.initialDescription;
             }
         }
     },
     computed: {
-
+        
     }
 })
