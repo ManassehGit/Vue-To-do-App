@@ -40,8 +40,8 @@
                         <input type="text" placeholder="Enter the Assignee's name" v-model="assignee" />
                         <button type="button" @click="addAssignee">Add assignee</button>
                     </div>
-                    <div v-for="title in titles">
-                        <ul v-if="title.assignees.length >= 1">
+                    <div v-for="title in titles" :key="title.name">
+                        <ul v-if="title.assignees.length >= 1 && title.name == activeTab">
                             
                                 <li v-for="member in title.assignees">
                                     <div class="assigneesList"></div>
