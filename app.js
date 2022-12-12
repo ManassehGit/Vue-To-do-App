@@ -61,17 +61,18 @@ let app = new Vue({
             this.addCategory = "";
         },
         setActive(tab){
+            
+            if(this.activeTab !== tab){
+                this.activeTab = tab;
+                console.log(`This tab was click on ${tab}`)
+                
+            }
             let tabIndex = this.titles.findIndex(item => item.name == this.activeTab);
             console.log(tabIndex)
             if(tabIndex >= 0){
                 this.setHeading(this.titles[tabIndex].heading);
                 this.setDescription(this.titles[tabIndex].description);
             } 
-            if(this.activeTab !== tab){
-                this.activeTab = tab;
-                console.log(`This tab was click on ${tab}`)
-                
-            }
             
         }, 
         addAssignee(){
