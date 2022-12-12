@@ -85,3 +85,24 @@ header{
 .card:hover{
     box-shadow: none;
 }
+
+.card h2 {
+    font-size: 1.5em;
+    font-weight: bolder;
+}
+
+.card p{
+    width: 80%;
+    margin: 2em;
+}
+
+.card span{
+    color: #695239;
+    font-size: 1em;
+    font-weight: bold;
+    border-bottom: 0.5px dashed black;
+}
+
+.card .inputAndButton {
+    margin: 1em;
+}

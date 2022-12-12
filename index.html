@@ -29,20 +29,22 @@
                 <div class="card">
                     <h2>{{activeTab}}</h2>
                     <p>
-                        A description for the given title<br />
+                        <span>A description for the given title</span><br />
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. 
                         Ipsa sequi harum sapiente, vitae aspernatur ut vero at culpa 
                         fuga eligendi aliquam. Qui, nisi odio magnam odit necessitatibus 
                         sunt, esse maiores, quis eligendi dolores at ipsam commodi dicta 
                         quo repellendus eius.
                     </p>
-                    <div>
+                    <div class="inputAndButton">
                         <input type="text" placeholder="Enter the Assignee's name" v-model="assignee" />
                         <button type="button" @click="addAssignee">Add assignee</button>
                     </div>
-                    <ul v-if="titles[activeTab]">
-                        <li v-if="Object.keys(titles).includes(activeTab)" v-for="item in titles[activeTab].assignees">{{item}}</li>
-                    </ul>
+                    <div v-for="title in titles">
+                        <ul v-if="title.assignees.length >= 1">
+                            <li v-for="item in title.assignees">--> {{item}}</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>

@@ -29,6 +29,7 @@ let app = new Vue({
                 //add a new task object
                 this.titles.push(new Task(name));
                 this.addCategory = "";
+
             }
             this.addCategory = "";
         },
@@ -36,13 +37,15 @@ let app = new Vue({
             if(this.activeTab !== tab){
                 this.activeTab = tab;
                 console.log(`This tab was click on ${tab}`)
-                console.log(this.titles.filter(item => item.name !== "yello"))
+                
             }
         }, 
         addAssignee(){
-            if(Object.keys(this.titles).includes(this.activeTab) && this.assignee !== ""){
-                this.titles[this.activeTab].assignees.push(this.assignee);
-                // console.log(this.titles[this.activeTab].assignees);
+            let tabIndex = this.titles.findIndex(item => item.name == this.activeTab);
+            console.log("The index of the somethinf ", tabIndex);
+            if(tabIndex >= 0 && this.assignee !== ""){
+                this.titles[tabIndex].assignees.push(this.assignee);
+                console.log(this.titles[tabIndex].assignees);
                 this.assignee = "";
             }
             this.assignee = ""
