@@ -1,0 +1,18 @@
+Vue JS
+
+Colon before attributes signify dynamic attributes
+v-on or @ for the event listening
+in-built functions preceded with $ eg; $emit()
+Example listener:
+    @enlarge-text="postSize += 1"
+
+typical vue component:
+
+<text>
+    <script>
+        export default {
+            props: ['title],
+            emits: ['enlarge-text']
+        }
+    </script>
+</text>

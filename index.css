@@ -76,6 +76,7 @@ header{
     background-color: antiquewhite;
     box-shadow: 4px 4px 9px gray;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     

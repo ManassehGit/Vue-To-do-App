@@ -1,28 +1,30 @@
+class Task {
+    constructor(name){
+        this.name = name;
+        this.description = "";
+        this.assignees = [];
+        this.setDate = new Date();
+        this.duration = "";
+    }
+}
 let app = new Vue({
     el: "#app",
     data() {
         return {
             headerText: "To Do",
-            titles: {"General": {}, "Others": {}}, 
+            titles: {
+                "General": new Task("General"),
+                "Others": new Task("Others")
+            }, 
             addCategory: ""
         }
     },
     methods: {
-        addTitle(){
-            this.titles[this.addCategory] = {};
-            this.addCategory = "";
+        addTitle(name = this.addCategory){
+            if(!Object.keys(this.titles).includes(name)){
+                this.titles[this.addCategory] = new Task(name);
+                this.addCategory = "";
+            }
         }
-    }
-})
-
-const aCard = document.querySelector(".card");
-
-
-aCard.addEventListener('click', () => {
-    let selectedText = aCard.innerHTML;
-    if(selectedText === "Hello World"){
-        aCard.innerHTML = "Clicked on!"
-    }else{
-        aCard.innerHTML = "Hello World"
     }
 })
