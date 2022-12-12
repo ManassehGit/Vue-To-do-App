@@ -42,7 +42,14 @@
                     </div>
                     <div v-for="title in titles">
                         <ul v-if="title.assignees.length >= 1">
-                            <li v-for="item in title.assignees">--> {{item}}</li>
+                            
+                                <li v-for="member in title.assignees">
+                                    <div class="assigneesList"></div>
+                                        --> {{member}}
+                                        <button @click="deleteAssignee(member)">X</button>
+                                    </div>
+                                </li>
+                            
                         </ul>
                     </div>
                 </div>

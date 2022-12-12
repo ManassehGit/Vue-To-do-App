@@ -42,13 +42,20 @@ let app = new Vue({
         }, 
         addAssignee(){
             let tabIndex = this.titles.findIndex(item => item.name == this.activeTab);
-            console.log("The index of the somethinf ", tabIndex);
             if(tabIndex >= 0 && this.assignee !== ""){
                 this.titles[tabIndex].assignees.push(this.assignee);
                 console.log(this.titles[tabIndex].assignees);
                 this.assignee = "";
             }
             this.assignee = ""
+        }, 
+        deleteAssignee(assignee){
+            let tabIndex = this.titles.findIndex(item => item.name == this.activeTab);
+            if(tabIndex >= 0){
+                let newAssigneesList = this.titles[tabIndex].assignees.filter(member => member !== assignee);
+                this.titles[tabIndex].assignees = newAssigneesList;
+                console.log(this.titles[tabIndex].assignees);
+            }
         }
     },
     computed: {
