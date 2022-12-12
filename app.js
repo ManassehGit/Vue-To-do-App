@@ -11,27 +11,44 @@ let app = new Vue({
     el: "#app",
     data() {
         return {
-            headerText: "To Do",
-            titles: {
-                "General": new Task("General"),
-                "Others": new Task("Others")
-            }, 
+            headerText: "Sugerencias",
+            titles: [
+                new Task("General"),
+                new Task("Others")
+            ], 
             addCategory: "",
-            activeTab: "Welcome to Todo"
+            activeTab: "Welcome to Todo",
+            assignee: "",
+            currentAssignees: []
         }
     },
     methods: {
-        addTitle(name = this.addCategory){
-            if(!Object.keys(this.titles).includes(name)){
-                this.titles[this.addCategory] = new Task(name);
+        addTitle(name){
+            let newTask = new Task(name)
+            if(this.addCategory !== "" && this.titles.filter(object => object.name === newTask.name).length < 1){
+                //add a new task object
+                this.titles.push(new Task(name));
                 this.addCategory = "";
             }
+            this.addCategory = "";
         },
-        setActive(title){
-            if(this.activeTab !== title){
-                this.activeTab = title;
-                console.log(`This tab was click on ${title}`)
+        setActive(tab){
+            if(this.activeTab !== tab){
+                this.activeTab = tab;
+                console.log(`This tab was click on ${tab}`)
+                console.log(this.titles.filter(item => item.name !== "yello"))
             }
+        }, 
+        addAssignee(){
+            if(Object.keys(this.titles).includes(this.activeTab) && this.assignee !== ""){
+                this.titles[this.activeTab].assignees.push(this.assignee);
+                // console.log(this.titles[this.activeTab].assignees);
+                this.assignee = "";
+            }
+            this.assignee = ""
         }
+    },
+    computed: {
+
     }
 })

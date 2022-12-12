@@ -18,20 +18,31 @@
             <div class="sidebar">
                 <div class="sidetab sideInput">
                     <input type="text" v-model="addCategory" placeholder="Enter Here" id="sideInput"/>
-                    <button v-on:click="addTitle">Ok</button>
+                    <button v-on:click="addTitle(addCategory)">Ok</button>
                 </div>
-                <div class="sidetab" v-for="title of Object.keys(titles)">
-                    <div @click="setActive(title)">{{title}}</div>
+                <div class="sidetab" v-for="title of titles">
+                    <div @click="setActive(title.name)">{{title.name}}</div>
                 </div>
                 
             </div>
             <div class="mainBody">
                 <div class="card">
-                    <h2>{{Object.keys(titles)}}</h2>
+                    <h2>{{activeTab}}</h2>
                     <p>
                         A description for the given title<br />
-                        Something to 
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                        Ipsa sequi harum sapiente, vitae aspernatur ut vero at culpa 
+                        fuga eligendi aliquam. Qui, nisi odio magnam odit necessitatibus 
+                        sunt, esse maiores, quis eligendi dolores at ipsam commodi dicta 
+                        quo repellendus eius.
                     </p>
+                    <div>
+                        <input type="text" placeholder="Enter the Assignee's name" v-model="assignee" />
+                        <button type="button" @click="addAssignee">Add assignee</button>
+                    </div>
+                    <ul v-if="titles[activeTab]">
+                        <li v-if="Object.keys(titles).includes(activeTab)" v-for="item in titles[activeTab].assignees">{{item}}</li>
+                    </ul>
                 </div>
             </div>
         </section>
