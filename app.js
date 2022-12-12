@@ -33,7 +33,8 @@ let app = new Vue({
             assignee: "",
             initialHeading: sampleHeading,
             initialDescription: sampleDescription,
-            edit: false
+            headingEdit: false,
+            descriptionEdit: false
         }
     },
     methods: {
@@ -72,14 +73,21 @@ let app = new Vue({
             }
         },
         enableEdit(option){
-            this.edit = true;
             if(option === "heading"){
-                
+                this.headingEdit = true;
+            }
+            if(option === "mainDescription"){
+                this.descriptionEdit = true;
             }
         },
         handleEdit(){
-            console.log("Yet to save the edit state")
-            this.edit = false;
+            let option = this.headingEdit ? "heading" : "mainDescription";
+            if(option === "heading"){
+                this.headingEdit = false;
+            }
+            if(option === "mainDescription"){
+                this.descriptionEdit = false;
+            }
         }
     },
     computed: {

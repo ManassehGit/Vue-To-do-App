@@ -30,14 +30,17 @@
                     <h2>{{activeTab}}</h2>
                     <p class="main">
                         <span @click="enableEdit('heading')" class="heading">
-                            <span v-show="!edit">{{initialHeading}}</span>
-                            <input v-show="edit" type="text" v-model="initialHeading" />
+                            <span v-show="!headingEdit">{{initialHeading}}</span>
+                            <input v-show="headingEdit" type="text" v-model="initialHeading" />
                         </span><br />                  
                         <span @click="enableEdit('mainDescription')" class="mainDescription">
-                            {{initialDescription}}
+                            <span v-show="!descriptionEdit">{{initialDescription}}</span>
+                            <textarea v-show="descriptionEdit" v-model="initialDescription" rows="5" cols="60">
+
+                            </textarea>
                         </span>
                         <br />
-                        <button v-show="edit === true" @click="handleEdit">Save</button>
+                        <button v-show="headingEdit === true || descriptionEdit === true" @click="handleEdit">Save</button>
                     </p>
                     <div class="inputAndButton">
                         <input type="text" placeholder="Enter the Assignee's name" v-model="assignee" />
